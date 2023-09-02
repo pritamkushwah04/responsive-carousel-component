@@ -1,0 +1,30 @@
+.arrow-control {
+    background-color: rgba(203, 213, 225);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .arrow {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 10px;
+  }
+  
+  .dots {
+    display: flex;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .dot.active {
+    background-color: #007bff;
+  }
