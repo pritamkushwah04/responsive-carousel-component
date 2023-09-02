@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Carousals from "./Components/Carousals";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Navbar/> 
+       <div className="text-center p-8 bg-slate-300">
+        <h2 className="text-7xl">Featured Products</h2>
+        <h4 className="text-2xl">Explore annd discover a variety of products</h4>
+      </div>
+      <Carousals/>
     </div>
   );
 }
