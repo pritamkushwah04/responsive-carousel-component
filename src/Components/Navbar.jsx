@@ -10,7 +10,7 @@ const Navbar = () => {
 
     function toggleMore() {
         const ele = document.getElementById('dropdownMenu');
-        if (ele.className == 'hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ') {
+        if (ele.className === 'hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ') {
             ele.className = 'hidden sm:block absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ';
         } else {
             ele.className = 'hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ';
@@ -23,7 +23,7 @@ const Navbar = () => {
         const hamMenuCancleBtn = document.getElementById('hamMenuCancleBtn');
         const hamDropdownMenu =document.getElementById('hamDropdownMenu');
 
-        if (hamMenuBtn.className == '') {
+        if (hamMenuBtn.className === '') {
             hamMenuBtn.className = 'hidden';
             hamMenuCancleBtn.className='';
             hamDropdownMenu.className='absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '
@@ -65,21 +65,29 @@ const Navbar = () => {
         };
     }, [setBreakPoint]);
 
+    document.addEventListener('click', (e) => {
+        const menuContainer = document.getElementById('dropdownMenu');
+        const menuButton =document.getElementById('moreBtn')
+        if (!menuContainer.contains(e.target) && e.target !== menuButton) {
+            menuContainer.className = 'hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ';
+        }
+    });
+
     return (
         <nav className='flex justify-between  items-center p-4 bg-[#2f302c] text-white '>
             <h1 className=''>E-COMM</h1>
             <ul className='flex '>
                 {navItemsHor.map((items, index) => (
-                    <li className="mx-4 " key={index}>
+                    <li className="mx-4 cursor-pointer" key={index}>
                         {items}
                     </li>
                 ))}
-                <li>
-                    <li id='moreBtn' onClick={toggleMore} className='hidden sm:block ' >MORE</li>
-                    <div id='dropdownMenu' className='hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md '>
+                <li className='relative z-10'>
+                    <li id='moreBtn' onClick={toggleMore} className='hidden cursor-pointer sm:block' >MORE</li>
+                    <div id='dropdownMenu' className='hidden relative z-10 top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md '>
                         <ul>
                             {navItemsMore.map((items, index) => (
-                                <li className="px-4 py-2 hover:bg-[#eeeeee] hover:text-black" key={index}>
+                                <li className="px-4 py-2 overflow-hidden hover:bg-[#eeeeee] hover:text-black" key={index}>
                                     {items}
                                 </li>
                             ))}
@@ -100,7 +108,7 @@ const Navbar = () => {
                 <div onClick={toggleHam} id='hamMenuCancleBtn' className='hidden'>
                     X
                 </div>
-                <div id='hamDropdownMenu' className='absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '>
+                <div id='hamDropdownMenu' className='hidden absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white'>
                     <ul>
                         {navItemsMore.map((items, index) => (
                             <li className="px-4 py-2 hover:bg-[#eeeeee] hover:text-black" key={index}>

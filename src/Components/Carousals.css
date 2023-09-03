@@ -2,7 +2,7 @@
     --card-width: 450px;
     --card-height: 300px;
   }
-
+  
 .container {
     width: 100vw;
     height: 50vh;
@@ -13,7 +13,7 @@
 }
 .card-0 {
     display: inline-block;
-    background-color: yellow;
+    background-color: rgba(152, 179, 186);
     height: calc(var(--card-height)/2); 
     width: calc(var(--card-width)/2);  
     border-radius: 7%;
@@ -31,7 +31,7 @@
 .card-1 {
     display: inline-block;
     position: absolute;
-    background-color: blue;
+    background-color: rgba(152, 179, 186);
     height: calc((2/3) * var(--card-height)); 
     width: calc((2/3)* var(--card-width));  
     border-radius: 7%;
@@ -48,7 +48,7 @@
 
 .card-2 {
     display: inline-block;
-    background-color: red;
+    background-color: rgba(152, 179, 186);
     height: calc(var(--card-height)); 
     width: calc(var(--card-width));  
     border-radius: 7%;
@@ -70,7 +70,7 @@
 .card-3 {
     display: inline-block;
     position: absolute;
-    background-color: rosybrown;
+    background-color: rgba(152, 179, 186);
     height: calc((2/3) * var(--card-height)); 
     width: calc((2/3)* var(--card-width));  
     border-radius: 7%;
@@ -87,7 +87,7 @@
 
 .card-4 {
     display: inline-block;
-    background-color: cyan;
+    background-color: rgba(152, 179, 186);
     height: calc(var(--card-height)/2); 
     width: calc(var(--card-width)/2);  
     border-radius: 7%;
