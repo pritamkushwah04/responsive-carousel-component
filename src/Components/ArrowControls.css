@@ -12,6 +12,16 @@
     margin: 0 10px;
   }
   
+  .arrow-left{
+    transform: scale(-1);
+    opacity: 0.3;
+  }
+  
+  .arrow-right{
+    opacity: 0.3;
+  }
+  
+  
   .dots {
     display: flex;
   }
@@ -20,11 +30,14 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: rgba(182,190,201);
     margin: 0 5px;
     transition: background-color 0.3s;
   }
   
   .dot.active {
     background-color: #007bff;
+    width: 25px;
+    border-radius: 20%;
+    
   }

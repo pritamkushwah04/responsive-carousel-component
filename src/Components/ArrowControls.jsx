@@ -13,12 +13,12 @@ const ArrowControls = ({ totalItems, activeItem, onPrevClick, onNextClick }) => 
 
   return (
     <div className="arrow-control">
-      <div className="arrow left" onClick={onPrevClick}>
-        &lt;
+      <div className="arrow-left" onClick={onPrevClick}>
+      <img src="/assets/icons/right-arrow.png" alt="" />
       </div>
       <div className="dots">{dots}</div>
-      <div className="arrow right" onClick={onNextClick}>
-        &gt;
+      <div className="arrow-right" onClick={onNextClick}>
+      <img src="/assets/icons/right-arrow.png" alt="" />
       </div>
     </div>
   );

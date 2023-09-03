@@ -21,29 +21,39 @@ const Navbar = () => {
     function toggleHam() {
         const hamMenuBtn = document.getElementById('hamMenuBtn');
         const hamMenuCancleBtn = document.getElementById('hamMenuCancleBtn');
-        const hamDropdownMenu =document.getElementById('hamDropdownMenu');
+        const hamDropdownMenu = document.getElementById('hamDropdownMenu');
 
         if (hamMenuBtn.className === '') {
             hamMenuBtn.className = 'hidden';
-            hamMenuCancleBtn.className='';
-            hamDropdownMenu.className='absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '
-        }else {
+            hamMenuCancleBtn.className = '';
+            hamDropdownMenu.className = 'absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '
+        } else {
             hamMenuBtn.className = '';
-            hamMenuCancleBtn.className='hidden';
-            hamDropdownMenu.className='hidden absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '
+            hamMenuCancleBtn.className = 'hidden';
+            hamDropdownMenu.className = 'hidden absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white '
         }
 
     }
 
     useEffect(() => {
         function handleResize() {
-            if (window.matchMedia("(min-width: 1250px)").matches) {
+            if (window.matchMedia("(min-width: 1632px)").matches) {
+                setBreakPoint(12);
+            } if (window.matchMedia("(min-width: 1485px)").matches) {
+                setBreakPoint(11);
+            } else if (window.matchMedia("(min-width: 1370px)").matches) {
+                setBreakPoint(10);
+            } else if (window.matchMedia("(min-width: 1270px)").matches) {
+                setBreakPoint(9);
+            } else if (window.matchMedia("(min-width: 1140px)").matches) {
+                setBreakPoint(8);
+            } else if (window.matchMedia("(min-width: 1038px)").matches) {
                 setBreakPoint(7);
             } else if (window.matchMedia("(min-width: 1000px)").matches) {
                 setBreakPoint(6);
             } else if (window.matchMedia("(min-width: 850px)").matches) {
                 setBreakPoint(5);
-            } else if (window.matchMedia("(min-width: 730px)").matches) {
+            } else if (window.matchMedia("(min-width: 740px)").matches) {
                 setBreakPoint(4);
             } else if (window.matchMedia("(min-width: 710px)").matches) {
                 setBreakPoint(3);
@@ -67,7 +77,7 @@ const Navbar = () => {
 
     document.addEventListener('click', (e) => {
         const menuContainer = document.getElementById('dropdownMenu');
-        const menuButton =document.getElementById('moreBtn')
+        const menuButton = document.getElementById('moreBtn')
         if (!menuContainer.contains(e.target) && e.target !== menuButton) {
             menuContainer.className = 'hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md ';
         }
@@ -82,14 +92,19 @@ const Navbar = () => {
                         {items}
                     </li>
                 ))}
-                <li className='relative z-10'>
-                    <li id='moreBtn' onClick={toggleMore} className='hidden cursor-pointer sm:block' >MORE</li>
-                    <div id='dropdownMenu' className='hidden relative z-10 top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md '>
+                <li className='relative z-10 cursor-pointer'>
+                    <div onClick={toggleMore} className='flex items-center '>
+                        <li id='moreBtn' className='hidden  sm:block' >MORE</li>
+                        <img className='h-4 hidden  sm:block' src="/assets/icons/expand-arrow.png" alt="" />
+                    </div>
+
+                    <div id='dropdownMenu' className='hidden absolute top-[70px] -ml-12 bg-[#2f302c] text-white rounded-md '>
                         <ul>
                             {navItemsMore.map((items, index) => (
-                                <li className="px-4 py-2 overflow-hidden hover:bg-[#eeeeee] hover:text-black" key={index}>
-                                    {items}
-                                </li>
+                                    <li className="px-4 py-2 overflow-hidden hover:bg-[#eeeeee] hover:text-black" key={index}>
+                                        {items}
+                                    </li>
+                               
                             ))}
                         </ul>
                     </div>
@@ -114,10 +129,11 @@ const Navbar = () => {
                             <li className="px-4 py-2 hover:bg-[#eeeeee] hover:text-black" key={index}>
                                 {items}
                             </li>
+
                         ))}
                     </ul>
                 </div>
-                
+
             </div>
 
         </nav>

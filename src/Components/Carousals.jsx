@@ -1,5 +1,5 @@
 import React from 'react'
-import {  useRef,useEffect } from 'react';
+import {  useRef,useState,useEffect  } from 'react';
 
 import "./Carousals.css";
 import ArrowControls from './ArrowControls';
@@ -7,12 +7,29 @@ import imgs from './../data'
 
 
 const Carousals = () => {
-    var curIndex = 0;
-    var activeItem = 2;
     const totalItems = 5;
     const carouselIntervalRef = useRef();
     const cardPositionRef = useRef([]);
+    const curIndexRef= useRef(0);
+    const [activeItem,setActiveItem]=useState(2);
 
+    
+
+    // const rotateCarousal = useCallback((dir) => {
+    //     curIndexRef.current = (curIndexRef.current + dir) % 5;
+    //     if (curIndexRef.current === -1) {
+    //       curIndexRef.current = 4;
+    //     }
+    //     for (let i = 0; i < 5; i++) {
+    //       TranslateAToB('card-' + i, i, (i + curIndexRef.current) % 5);
+    //       console.log("curIndexRef.current");
+    //       console.log(curIndexRef.current);
+    //     }
+    //     setActiveItem((current) => ((curIndexRef.current + dir) % 5) !== -1 ? ((curIndexRef.current + dir) % 5) : 4);
+    //     console.log(activeItem);
+    //   },[activeItem]);
+
+    
     useEffect(() => {
         const cardCount = 5; // Specify the number of cards
         const cardPosition = cardPositionRef.current; // Access the ref value
@@ -31,8 +48,8 @@ const Carousals = () => {
             });
         }
         carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
-        
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
 
 
@@ -44,28 +61,32 @@ const Carousals = () => {
         cardA.style.height = cardPosition[toIndex].height + 'px';
         if(cardA.style.zIndex==='0' && cardPosition[toIndex].zIndex==='0'){
             cardA.style.zIndex=-1;   
-            console.log("changed to -1"); 
         }else{
             cardA.style.zIndex = cardPosition[toIndex].zIndex;
         }
     }
 
+    
     function rotateCarousal(dir) {
-        curIndex = (curIndex + dir) % 5;
-        if (curIndex === -1) {
-            curIndex = 4;
+        curIndexRef.current = (curIndexRef.current + dir) % 5;
+        if (curIndexRef.current === -1) {
+            curIndexRef.current = 4;
         }
         for (let i = 0; i < 5; i++) {
-            TranslateAToB('card-' + i, i, (i + curIndex) % 5);
+            TranslateAToB('card-' + i, i, (i + curIndexRef.current) % 5);
+            console.log("curIndexRef.current");
+            console.log(curIndexRef.current);
+            
         }
-
+        setActiveItem((current)=>((curIndexRef.current + dir) % 5)!==-1?((curIndexRef.current + dir) % 5):4);
+        console.log(activeItem);
     }
 
     function handleNextClick() {
         if (carouselIntervalRef.current) {
             clearInterval(carouselIntervalRef.current);
         }
-        rotateCarousal(-1);
+        rotateCarousal(1);
         carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
     }
 
@@ -73,7 +94,7 @@ const Carousals = () => {
         if (carouselIntervalRef.current) {
             clearInterval(carouselIntervalRef.current);
         }
-        rotateCarousal(1);
+        rotateCarousal(-1);
         carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
     }
 
