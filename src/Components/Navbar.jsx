@@ -114,22 +114,21 @@ const Navbar = () => {
                 <div className='absolute m-3'>
                     <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                 </div>
-                <input type="text" id="email-adress-icon" class="  bg-[#2f302c] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2" placeholder="Search Something..." />
+                <input type="text" id="email-adress-icon" class="  bg-[#2f302c] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 sm:w-full pl-10 p-2" placeholder="Search Something..." />
             </div>
             <div className='sm:hidden z-10'>
                 <div onClick={toggleHam} id='hamMenuBtn' className=''>
-                    O
+                <img className='' src="/assets/icons/ham-menu.png" alt="" />
                 </div>
                 <div onClick={toggleHam} id='hamMenuCancleBtn' className='hidden'>
-                    X
+                <img className='' src="/assets/icons/cancle-btn.png" alt="" />
                 </div>
                 <div id='hamDropdownMenu' className='hidden absolute top-[70px] left-0 min-w-full bg-[#2f302c] text-white'>
-                    <ul>
+                    <ul className='flex flex-col items-center'>
                         {navItemsMore.map((items, index) => (
-                            <li className="px-4 py-2 hover:bg-[#eeeeee] hover:text-black" key={index}>
+                            <li className="w-full text-center px-4 py-2 hover:bg-[#eeeeee] hover:text-black" key={index}>
                                 {items}
                             </li>
-
                         ))}
                     </ul>
                 </div>

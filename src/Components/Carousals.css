@@ -1,105 +1,73 @@
 :root {
     --card-width: 450px;
     --card-height: 300px;
-    --anim: ease
+    --anim: ease-in-out
   }
   
-.container {
+ .par-container{
+    /* background-color: rgba(203, 213, 225); */
     width: 100vw;
-    height: 50vh;
-    background-color: rgba(203, 213, 225);
+    height: 60vh;
     display: inline-block; 
     position: relative;
     z-index: 0;
+} 
+.info-container{
+    display: none;
+    background-color: black;
+    color: white;
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    z-index: 10;
+    bottom: 0px;
+    opacity: .4;
+    padding-top: 4px;
 }
-.card-0 {
+.card {
     display: inline-block;
     background-color: rgba(152, 179, 186);
-    height: calc(var(--card-height)/2); 
-    width: calc(var(--card-width)/2);  
+    height: calc(var(--card-height)/2);
+    width: calc(var(--card-width)/2);
     border-radius: 7%;
     z-index: 0;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    margin-left: -450px;  
-    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card-1 {
-    display: inline-block;
-    position: absolute;
-    background-color: rgba(152, 179, 186);
-    height: calc((2/3) * var(--card-height)); 
-    width: calc((2/3)* var(--card-width));  
-    border-radius: 7%;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    margin-left: -300px;  
+    transform: translate(-50%, -50%);
     transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     text-align: center;
     overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 8px rgba(144, 148, 148, 0.995);
+    /* rgba(163, 248, 248, 0.995) */
 }
 
-.card-2 {
-    display: inline-block;
-    background-color: rgba(152, 179, 186);
-    height: calc(var(--card-height)); 
-    width: calc(var(--card-width));  
-    border-radius: 7%;
+#card-0 {
+    margin-left: -450px;
+}
+
+#card-1 {
+    z-index: 1;
+    height: calc((2/3) * var(--card-height));
+    width: calc((2/3) * var(--card-width));
+    margin-left: -300px;
+}
+
+#card-2 {
     z-index: 2;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    height: var(--card-height);
+    width: var(--card-width);
+    
 }
 
-
-
-
-
-.card-3 {
-    display: inline-block;
-    position: absolute;
-    background-color: rgba(152, 179, 186);
-    height: calc((2/3) * var(--card-height)); 
-    width: calc((2/3)* var(--card-width));  
-    border-radius: 7%;
+#card-3 {
     z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    margin-left: +300px;  
-    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    height: calc((2/3) * var(--card-height));
+    width: calc((2/3) * var(--card-width));
+    margin-left: 300px;
 }
 
-.card-4 {
-    display: inline-block;
-    background-color: rgba(152, 179, 186);
-    height: calc(var(--card-height)/2); 
-    width: calc(var(--card-width)/2);  
-    border-radius: 7%;
-    z-index: 0;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    margin-left: +450px;  
-    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+#card-4 {
+    margin-left: 450px;
 }
+

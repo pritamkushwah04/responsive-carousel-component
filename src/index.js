@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+root.style="bg-red";
 root.render(
   // <React.StrictMode>
     <App />

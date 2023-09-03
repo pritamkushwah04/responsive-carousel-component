@@ -6,8 +6,6 @@ const ArrowControls = ({ totalItems, activeItem, onPrevClick, onNextClick }) => 
     <div
       key={index}
       className={`dot ${activeItem === index ? 'active' : ''}`}
-      
-      
     ></div>
   ));
 

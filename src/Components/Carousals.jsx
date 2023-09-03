@@ -12,28 +12,10 @@ const Carousals = () => {
     const cardPositionRef = useRef([]);
     const curIndexRef= useRef(0);
     const [activeItem,setActiveItem]=useState(2);
-
-    
-
-    // const rotateCarousal = useCallback((dir) => {
-    //     curIndexRef.current = (curIndexRef.current + dir) % 5;
-    //     if (curIndexRef.current === -1) {
-    //       curIndexRef.current = 4;
-    //     }
-    //     for (let i = 0; i < 5; i++) {
-    //       TranslateAToB('card-' + i, i, (i + curIndexRef.current) % 5);
-    //       console.log("curIndexRef.current");
-    //       console.log(curIndexRef.current);
-    //     }
-    //     setActiveItem((current) => ((curIndexRef.current + dir) % 5) !== -1 ? ((curIndexRef.current + dir) % 5) : 4);
-    //     console.log(activeItem);
-    //   },[activeItem]);
-
     
     useEffect(() => {
         const cardCount = 5; // Specify the number of cards
         const cardPosition = cardPositionRef.current; // Access the ref value
-    
         for (let i = 0; i < cardCount; i++) {
             const card = document.getElementById(`card-${i}`);
             const computedStyle = window.getComputedStyle(card);
@@ -51,8 +33,6 @@ const Carousals = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-
-
     function TranslateAToB(card, fromIndex, toIndex) {
         const cardA = document.getElementById(card);
         const cardPosition = cardPositionRef.current;
@@ -64,50 +44,45 @@ const Carousals = () => {
         }else{
             cardA.style.zIndex = cardPosition[toIndex].zIndex;
         }
+        if(cardA.style.zIndex==='2'){
+            cardA.querySelectorAll('.info-container')[0].style.display='block';
+        }else{
+            cardA.querySelectorAll('.info-container')[0].style.display='none';
+        }
     }
 
     
     function rotateCarousal(dir) {
-        curIndexRef.current = (curIndexRef.current + dir) % 5;
-        if (curIndexRef.current === -1) {
-            curIndexRef.current = 4;
+        if (carouselIntervalRef.current) {
+            clearInterval(carouselIntervalRef.current);
         }
+        curIndexRef.current=((curIndexRef.current + dir) % 5)!==-1?((curIndexRef.current + dir) % 5):4;
         for (let i = 0; i < 5; i++) {
             TranslateAToB('card-' + i, i, (i + curIndexRef.current) % 5);
-            console.log("curIndexRef.current");
-            console.log(curIndexRef.current);
-            
         }
         setActiveItem((current)=>((curIndexRef.current + dir) % 5)!==-1?((curIndexRef.current + dir) % 5):4);
-        console.log(activeItem);
+        carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
     }
 
     function handleNextClick() {
-        if (carouselIntervalRef.current) {
-            clearInterval(carouselIntervalRef.current);
-        }
         rotateCarousal(1);
-        carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
     }
 
     function handlePrevClick() {
-        if (carouselIntervalRef.current) {
-            clearInterval(carouselIntervalRef.current);
-        }
         rotateCarousal(-1);
-        carouselIntervalRef.current = setInterval(() => rotateCarousal(1), 1500);
     }
-
-
 
     return (
         <div>
-            <div id='par-container' className="container">
-                {imgs.map((imgSrc, index) => (
-                    <div key={index} id={`card-${index}`} className={`card-${index}`}>
-                        <img src={imgSrc} alt="" />
+            <div id='par-container' className='par-container'>
+                <div>
+                {imgs.map((item, index) => (
+                    <div key={index} id={`card-${index}`} className={`card`}>
+                        <img src={item.imgSrc} alt="" />
+                        <div className="info-container">{item.name}</div>
                     </div>
                 ))}
+                </div>
             </div>
             <ArrowControls totalItems={totalItems}
                 activeItem={activeItem}
