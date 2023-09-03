@@ -42,7 +42,12 @@ const Carousals = () => {
         cardA.style.transform = `translate(${cardPosition[toIndex].X - (cardPosition[fromIndex].X - cardPosition[fromIndex].centerTransformX)}px,${cardPosition[toIndex].Y - (cardPosition[fromIndex].Y - cardPosition[fromIndex].centerTransformY)}px)`;
         cardA.style.width = cardPosition[toIndex].width + 'px';
         cardA.style.height = cardPosition[toIndex].height + 'px';
-        cardA.style.zIndex = cardPosition[toIndex].zIndex;
+        if(cardA.style.zIndex==='0' && cardPosition[toIndex].zIndex==='0'){
+            cardA.style.zIndex=-1;   
+            console.log("changed to -1"); 
+        }else{
+            cardA.style.zIndex = cardPosition[toIndex].zIndex;
+        }
     }
 
     function rotateCarousal(dir) {

@@ -1,6 +1,7 @@
 :root {
     --card-width: 450px;
     --card-height: 300px;
+    --anim: ease
   }
   
 .container {
@@ -23,7 +24,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
     margin-left: -450px;  
-    transition: transform 0.5s linear, width 0.5s linear, height 0.5s linear;
+    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -40,7 +41,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
     margin-left: -300px;  
-    transition: transform 0.5s linear, width 0.5s linear, height 0.5s linear;
+    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     text-align: center;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
@@ -57,7 +58,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    transition: transform 0.5s linear, width 0.5s linear, height 0.5s linear;
+    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     text-align: center;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
@@ -79,7 +80,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
     margin-left: +300px;  
-    transition: transform 0.5s linear, width 0.5s linear, height 0.5s linear;
+    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     text-align: center;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
@@ -97,7 +98,7 @@
     top: 50%;
     transform: translate(-50%,-50%);
     margin-left: +450px;  
-    transition: transform 0.5s linear, width 0.5s linear, height 0.5s linear;
+    transition: transform 0.5s var(--anim), width 0.5s var(--anim), height 0.5s var(--anim);
     text-align: center;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
